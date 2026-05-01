@@ -115,6 +115,21 @@ async function addContact() {
     }
 }
 
+async function refreshApp() {
+    try {
+        await loadMe();
+        await loadContacts();
+
+        if (selectedContact) {
+            await openChat(selectedContact);
+        }
+
+        console.log("App refreshed");
+    } catch (err) {
+        alert("Refresh failed: " + err.message);
+    }
+}
+
 async function openChat(user) {
     selectedContact = user;
     replyToMessageId = null;
