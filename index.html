@@ -20,22 +20,27 @@
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body { font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; background: var(--bg); color: var(--text); overflow: hidden; }
+
+        /* ==================== MOBILE RESPONSIVE BASE ==================== */
         .app-container { display: flex; height: 100vh; width: 100vw; }
         .hidden { display: none !important; }
 
+        /* Auth Screens */
         .auth-screen {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: linear-gradient(135deg, var(--primary-dark), var(--primary));
             display: flex; align-items: center; justify-content: center; z-index: 1000;
+            padding: 20px;
         }
         .auth-box {
-            background: white; padding: 40px; border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 90%; max-width: 400px; text-align: center;
+            background: white; padding: 30px; border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3); width: 100%; max-width: 400px;
+            text-align: center;
         }
-        .auth-box h1 { color: var(--primary); margin-bottom: 10px; font-size: 28px; }
-        .auth-box p { color: var(--text-secondary); margin-bottom: 30px; }
-        .input-group { margin-bottom: 20px; text-align: left; }
-        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--text); }
+        .auth-box h1 { color: var(--primary); margin-bottom: 10px; font-size: 24px; }
+        .auth-box p { color: var(--text-secondary); margin-bottom: 25px; font-size: 14px; }
+        .input-group { margin-bottom: 15px; text-align: left; }
+        .input-group label { display: block; margin-bottom: 5px; font-weight: 600; color: var(--text); font-size: 14px; }
         .input-group input {
             width: 100%; padding: 12px; border: 2px solid var(--border);
             border-radius: 10px; font-size: 16px; transition: border 0.3s;
@@ -45,7 +50,8 @@
         .password-wrapper input { padding-right: 45px; }
         .toggle-password {
             position: absolute; right: 12px; top: 50%; transform: translateY(-50%);
-            background: none; border: none; cursor: pointer; font-size: 18px; color: var(--text-secondary);
+            background: none; border: none; cursor: pointer; font-size: 18px;
+            color: var(--text-secondary);
         }
         .btn {
             width: 100%; padding: 14px; border: none; border-radius: 10px;
@@ -64,139 +70,241 @@
             margin: 20px 0; border: 2px dashed var(--primary);
         }
         .id-display label { display: block; font-size: 12px; color: var(--text-secondary); margin-bottom: 10px; font-family: sans-serif; font-weight: 600; }
-        .id-display .id-number { font-family: monospace; font-size: 32px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
+        .id-display .id-number { font-family: monospace; font-size: 28px; font-weight: bold; color: var(--primary); letter-spacing: 2px; }
         .id-display .id-hint { font-size: 13px; color: var(--text-secondary); margin-top: 10px; }
 
+        /* Notification Badge */
         .notification-badge {
             position: absolute; top: -5px; right: -5px;
             background: var(--notification-bg); color: white;
             font-size: 11px; padding: 2px 6px; border-radius: 10px; font-weight: bold;
         }
 
+        /* Request Cards */
         .request-card {
             background: var(--header-bg); padding: 15px; border-radius: 10px;
             margin-bottom: 15px; display: flex; align-items: center; gap: 15px;
         }
         .request-card .avatar { flex-shrink: 0; }
-        .request-info { flex: 1; }
-        .request-info h4 { font-size: 16px; margin-bottom: 3px; }
+        .request-info { flex: 1; min-width: 0; }
+        .request-info h4 { font-size: 16px; margin-bottom: 3px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
         .request-info p { font-size: 13px; color: var(--text-secondary); }
-        .request-actions { display: flex; gap: 10px; }
+        .request-actions { display: flex; gap: 10px; flex-shrink: 0; }
 
-        .sidebar { width: 380px; background: var(--sidebar-bg); border-right: 1px solid var(--border); display: flex; flex-direction: column; }
-        .sidebar-header {
-            background: var(--header-bg); padding: 15px; display: flex;
-            align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);
+        /* ==================== SIDEBAR ==================== */
+        .sidebar {
+            width: 380px; background: var(--sidebar-bg); border-right: 1px solid var(--border);
+            display: flex; flex-direction: column; transition: transform 0.3s;
+            flex-shrink: 0;
         }
-        .user-info { display: flex; align-items: center; gap: 10px; cursor: pointer; }
+        .sidebar-header {
+            background: var(--header-bg); padding: 12px 15px; display: flex;
+            align-items: center; justify-content: space-between; border-bottom: 1px solid var(--border);
+            min-height: 60px;
+        }
+        .user-info { display: flex; align-items: center; gap: 10px; cursor: pointer; min-width: 0; }
         .avatar {
             width: 40px; height: 40px; border-radius: 50%; object-fit: cover;
             background: var(--primary); display: flex; align-items: center; justify-content: center;
-            color: white; font-weight: bold; font-size: 18px;
+            color: white; font-weight: bold; font-size: 18px; flex-shrink: 0;
         }
         .avatar.large { width: 80px; height: 80px; font-size: 32px; }
-        .user-details h3 { font-size: 16px; }
-        .user-details p { font-size: 12px; color: var(--text-secondary); }
-        .header-actions { display: flex; gap: 15px; position: relative; }
+        .user-details { min-width: 0; overflow: hidden; }
+        .user-details h3 { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .user-details p { font-size: 12px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .header-actions { display: flex; gap: 10px; position: relative; }
         .icon-btn {
             background: none; border: none; font-size: 20px; cursor: pointer;
-            color: var(--text-secondary); padding: 5px; border-radius: 50%; position: relative;
+            color: var(--text-secondary); padding: 8px; border-radius: 50%;
+            transition: background 0.2s; position: relative;
+            width: 40px; height: 40px; display: flex; align-items: center; justify-content: center;
         }
         .icon-btn:hover { background: rgba(0,0,0,0.1); }
 
         .search-bar { padding: 10px 15px; background: var(--header-bg); border-bottom: 1px solid var(--border); display: flex; gap: 10px; }
         .search-bar input { flex: 1; padding: 8px 15px; border-radius: 20px; border: none; background: white; font-size: 14px; }
 
-        .chats-list { flex: 1; overflow-y: auto; }
+        .chats-list { flex: 1; overflow-y: auto; -webkit-overflow-scrolling: touch; }
         .chat-item { display: flex; align-items: center; padding: 12px 15px; border-bottom: 1px solid var(--border); cursor: pointer; }
         .chat-item:hover { background: var(--header-bg); }
         .chat-item.active { background: #E3F2FD; }
-        .chat-preview { flex: 1; margin-left: 12px; overflow: hidden; }
-        .chat-preview h4 { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-preview { flex: 1; margin-left: 12px; overflow: hidden; min-width: 0; }
+        .chat-preview h4 { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; margin-bottom: 3px; }
         .chat-preview p { font-size: 13px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
-        .chat-meta { text-align: right; }
+        .chat-meta { text-align: right; flex-shrink: 0; }
         .chat-meta .time { font-size: 12px; color: var(--text-secondary); }
         .unread-count { background: var(--secondary); color: white; font-size: 12px; padding: 2px 6px; border-radius: 10px; margin-top: 5px; display: inline-block; }
 
-        .chat-area { flex: 1; display: flex; flex-direction: column; background: var(--chat-bg); }
-        .chat-header { background: var(--header-bg); padding: 10px 20px; display: flex; align-items: center; border-bottom: 1px solid var(--border); }
-        .chat-header-info { flex: 1; margin-left: 15px; }
-        .chat-header-info h3 { font-size: 16px; }
-        .chat-header-info p { font-size: 13px; color: var(--text-secondary); }
-        .chat-header-actions { display: flex; gap: 20px; }
+        /* ==================== CHAT AREA ==================== */
+        .chat-area { flex: 1; display: flex; flex-direction: column; background: var(--chat-bg); position: relative; min-width: 0; }
+        .chat-header {
+            background: var(--header-bg); padding: 10px 15px;
+            display: flex; align-items: center; border-bottom: 1px solid var(--border);
+            min-height: 60px;
+        }
+        .chat-header-info { flex: 1; margin-left: 15px; min-width: 0; }
+        .chat-header-info h3 { font-size: 16px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-header-info p { font-size: 13px; color: var(--text-secondary); white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+        .chat-header-actions { display: flex; gap: 15px; flex-shrink: 0; }
 
-        .messages-container { flex: 1; overflow-y: auto; padding: 20px; display: flex; flex-direction: column; gap: 5px; }
-        .message { max-width: 70%; padding: 8px 12px; border-radius: 12px; position: relative; word-wrap: break-word; animation: messageIn 0.3s ease; }
-        @keyframes messageIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
-        .message.sent { align-self: flex-end; background: var(--message-out); border-bottom-right-radius: 4px; }
-        .message.received { align-self: flex-start; background: var(--message-in); border-bottom-left-radius: 4px; box-shadow: var(--shadow); }
-        .message.replying-to { font-size: 12px; color: var(--text-secondary); border-left: 3px solid var(--primary); padding-left: 8px; margin-bottom: 5px; background: rgba(0,0,0,0.05); padding: 5px 8px; border-radius: 4px; }
-        .message-content { font-size: 14px; line-height: 1.4; }
-        .message-media { max-width: 100%; border-radius: 8px; margin-top: 5px; cursor: pointer; }
+        .messages-container {
+            flex: 1; overflow-y: auto; padding: 15px;
+            display: flex; flex-direction: column; gap: 5px;
+            -webkit-overflow-scrolling: touch;
+        }
+        .message {
+            max-width: 75%; padding: 8px 12px; border-radius: 12px;
+            position: relative; word-wrap: break-word;
+            animation: messageIn 0.3s ease;
+        }
+        @keyframes messageIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        .message.sent {
+            align-self: flex-end; background: var(--message-out);
+            border-bottom-right-radius: 4px;
+        }
+        .message.received {
+            align-self: flex-start; background: var(--message-in);
+            border-bottom-left-radius: 4px; box-shadow: var(--shadow);
+        }
+        .message.replying-to {
+            font-size: 12px; color: var(--text-secondary);
+            border-left: 3px solid var(--primary); padding-left: 8px;
+            margin-bottom: 5px; background: rgba(0,0,0,0.05); padding: 5px 8px;
+            border-radius: 4px;
+        }
+        .message-content { font-size: 14px; line-height: 1.4; word-break: break-word; }
+        .message-media { max-width: 100%; border-radius: 8px; margin-top: 5px; cursor: pointer; display: block; }
         .message-audio { display: flex; align-items: center; gap: 10px; padding: 5px; }
-        .play-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; }
+        .play-btn { width: 40px; height: 40px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .audio-wave { flex: 1; height: 30px; display: flex; align-items: center; gap: 2px; }
         .wave-bar { width: 3px; background: var(--primary); border-radius: 2px; }
         .message-footer { display: flex; justify-content: flex-end; align-items: center; gap: 5px; margin-top: 4px; }
         .message-time { font-size: 11px; color: var(--text-secondary); }
         .message-status { font-size: 12px; color: var(--text-secondary); }
         .message-status.read { color: #53BDEB; }
-        .message-actions { position: absolute; top: -10px; right: 0; background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2); display: none; z-index: 10; min-width: 120px; }
+        .message-actions {
+            position: absolute; top: -10px; right: 0;
+            background: white; border-radius: 8px; box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+            display: none; z-index: 10; min-width: 120px;
+        }
         .message:hover .message-actions { display: block; }
         .message-action-item { padding: 8px 15px; font-size: 13px; cursor: pointer; display: flex; align-items: center; gap: 8px; }
         .message-action-item:hover { background: var(--header-bg); }
         .message.edited .message-time::after { content: " (edited)"; font-size: 10px; }
 
-        .input-area { background: var(--header-bg); padding: 10px 20px; display: flex; align-items: center; gap: 10px; border-top: 1px solid var(--border); }
-        .input-area input[type="text"] { flex: 1; padding: 12px 20px; border-radius: 25px; border: none; font-size: 15px; background: white; }
-        .send-btn { width: 45px; height: 45px; border-radius: 50%; background: var(--primary); color: white; border: none; cursor: pointer; font-size: 20px; display: flex; align-items: center; justify-content: center; }
+        .input-area {
+            background: var(--header-bg); padding: 8px 15px;
+            display: flex; align-items: center; gap: 8px; border-top: 1px solid var(--border);
+        }
+        .input-area input[type="text"] {
+            flex: 1; padding: 10px 15px; border-radius: 25px;
+            border: none; font-size: 15px; background: white;
+            min-width: 0;
+        }
+        .send-btn {
+            width: 42px; height: 42px; border-radius: 50%;
+            background: var(--primary); color: white; border: none;
+            cursor: pointer; font-size: 18px; display: flex;
+            align-items: center; justify-content: center;
+            transition: transform 0.2s; flex-shrink: 0;
+        }
+        .record-btn { width: 42px; height: 42px; border-radius: 50%; background: var(--header-bg); border: none; cursor: pointer; font-size: 18px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; }
         .record-btn.recording { background: var(--danger); animation: pulse 1s infinite; }
-        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.1); } }
 
-        .reply-bar { background: var(--header-bg); padding: 10px 20px; border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px; }
+        .reply-bar {
+            background: var(--header-bg); padding: 8px 15px;
+            border-top: 1px solid var(--border); display: flex; align-items: center; gap: 10px;
+        }
         .reply-bar.hidden { display: none; }
-        .reply-preview { flex: 1; background: rgba(0,0,0,0.05); padding: 8px; border-radius: 8px; }
+        .reply-preview { flex: 1; background: rgba(0,0,0,0.05); padding: 8px; border-radius: 8px; min-width: 0; }
         .reply-preview small { color: var(--primary); font-weight: 600; }
+        .reply-preview p { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
 
-        .modal-overlay { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; z-index: 100; }
-        .modal { background: var(--sidebar-bg); border-radius: 15px; width: 90%; max-width: 500px; max-height: 90vh; overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3); }
-        .modal-header { padding: 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
+        /* ==================== MODALS ==================== */
+        .modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.5); display: flex;
+            align-items: center; justify-content: center; z-index: 100;
+            padding: 20px;
+        }
+        .modal {
+            background: var(--sidebar-bg); border-radius: 15px;
+            width: 100%; max-width: 500px; max-height: 90vh;
+            overflow-y: auto; box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+        }
+        .modal-header { padding: 15px 20px; border-bottom: 1px solid var(--border); display: flex; justify-content: space-between; align-items: center; }
         .modal-body { padding: 20px; }
         .modal-footer { padding: 15px 20px; border-top: 1px solid var(--border); display: flex; justify-content: flex-end; gap: 10px; }
 
-        .profile-section { text-align: center; margin-bottom: 30px; }
+        /* ==================== PROFILE ==================== */
+        .profile-section { text-align: center; margin-bottom: 25px; }
         .profile-avatar-container { position: relative; display: inline-block; }
         .change-dp-btn { position: absolute; bottom: 0; right: 0; background: var(--primary); color: white; border: none; border-radius: 50%; width: 30px; height: 30px; cursor: pointer; }
         .remove-dp-btn { margin-top: 10px; padding: 8px 16px; background: var(--danger); color: white; border: none; border-radius: 20px; cursor: pointer; font-size: 13px; }
-        .info-row { display: flex; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--border); }
+        .info-row { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid var(--border); flex-wrap: wrap; gap: 8px; }
         .info-row label { color: var(--primary); font-size: 14px; }
         .info-row .value { font-size: 16px; }
-        .info-row .value.id { font-family: monospace; background: var(--header-bg); padding: 5px 10px; border-radius: 5px; }
+        .info-row .value.id { font-family: monospace; background: var(--header-bg); padding: 5px 10px; border-radius: 5px; font-size: 14px; }
 
+        /* ==================== SETTINGS ==================== */
         .settings-item { display: flex; align-items: center; justify-content: space-between; padding: 15px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
         .settings-item:hover { background: var(--header-bg); margin: 0 -20px; padding: 15px 20px; }
-        .settings-item-left { display: flex; align-items: center; gap: 15px; }
-        .settings-icon { font-size: 24px; }
+        .settings-item-left { display: flex; align-items: center; gap: 15px; min-width: 0; }
+        .settings-icon { font-size: 24px; flex-shrink: 0; }
         .settings-item h4 { font-size: 16px; }
         .settings-item p { font-size: 13px; color: var(--text-secondary); }
-        .toggle-switch { width: 50px; height: 28px; background: #ccc; border-radius: 14px; position: relative; cursor: pointer; transition: background 0.3s; }
+        .toggle-switch { width: 50px; height: 28px; background: #ccc; border-radius: 14px; position: relative; cursor: pointer; transition: background 0.3s; flex-shrink: 0; }
         .toggle-switch.active { background: var(--secondary); }
         .toggle-switch::after { content: ''; position: absolute; width: 24px; height: 24px; background: white; border-radius: 50%; top: 2px; left: 2px; transition: transform 0.3s; }
         .toggle-switch.active::after { transform: translateX(22px); }
 
+        /* ==================== MEDIA VIEWER ==================== */
         .media-viewer { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 200; display: flex; align-items: center; justify-content: center; }
-        .media-viewer img, .media-viewer video { max-width: 90%; max-height: 90%; }
+        .media-viewer img, .media-viewer video { max-width: 95%; max-height: 90%; }
         .media-viewer .close-viewer { position: absolute; top: 20px; right: 20px; color: white; font-size: 30px; background: none; border: none; cursor: pointer; }
 
-        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 12px 24px; border-radius: 25px; z-index: 300; animation: toastIn 0.3s ease; }
+        /* ==================== TOAST ==================== */
+        .toast { position: fixed; bottom: 20px; left: 50%; transform: translateX(-50%); background: #333; color: white; padding: 12px 24px; border-radius: 25px; z-index: 300; animation: toastIn 0.3s ease; max-width: 90%; text-align: center; }
         @keyframes toastIn { from { transform: translateX(-50%) translateY(100px); opacity: 0; } }
 
-        .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-secondary); }
-        .empty-state h2 { margin-top: 20px; font-size: 24px; }
+        /* ==================== EMPTY STATE ==================== */
+        .empty-state { flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; color: var(--text-secondary); padding: 20px; text-align: center; }
+        .empty-state h2 { margin-top: 20px; font-size: 22px; }
         .empty-state p { margin-top: 10px; font-size: 14px; }
 
+        /* ==================== ADD CONTACT ==================== */
         .add-contact-form { display: flex; gap: 10px; margin-bottom: 20px; }
         .add-contact-form input { flex: 1; padding: 12px; border: 2px solid var(--border); border-radius: 10px; font-size: 16px; }
+
+        /* ==================== MOBILE RESPONSIVE ==================== */
+        @media (max-width: 768px) {
+            .sidebar { position: absolute; width: 100%; z-index: 10; height: 100%; }
+            .sidebar.hidden-mobile { transform: translateX(-100%); }
+            .chat-area { width: 100%; }
+            .auth-box { padding: 25px 20px; }
+            .auth-box h1 { font-size: 22px; }
+            .id-display .id-number { font-size: 24px; }
+            .modal { max-height: 95vh; }
+            .message { max-width: 85%; }
+            .request-card { flex-wrap: wrap; }
+            .request-actions { width: 100%; justify-content: flex-end; margin-top: 10px; }
+            .chat-header-info { max-width: 150px; }
+        }
+
+        @media (max-width: 480px) {
+            .sidebar { width: 100%; }
+            .message { max-width: 90%; padding: 6px 10px; }
+            .message-content { font-size: 13px; }
+            .input-area input[type="text"] { font-size: 16px; }
+            .icon-btn { width: 36px; height: 36px; font-size: 18px; }
+            .send-btn, .record-btn { width: 38px; height: 38px; }
+            .header-actions { gap: 5px; }
+            .user-details h3 { font-size: 14px; }
+            .chat-preview h4 { font-size: 15px; }
+        }
     </style>
 <base target="_blank">
 </head>
@@ -205,7 +313,7 @@
     <script src="https://cdn.socket.io/4.5.4/socket.io.min.js"></script>
     <script>
 
-        const API_URL = 'https://chat-app-hb6j.onrender.com';
+        const API_URL = 'http://localhost:5000';
 
         const AppState = {
             currentUser: null, token: null, users: {}, contacts: [],
@@ -246,13 +354,16 @@
             AppState.socket.on('new_message', (data) => {
                 const { chat_id, message } = data;
                 if (!AppState.messages[chat_id]) AppState.messages[chat_id] = [];
-                AppState.messages[chat_id].push(message);
-                if (AppState.chats[chat_id]) {
-                    AppState.chats[chat_id].lastMessage = message;
-                    if (chat_id !== AppState.activeChat) AppState.chats[chat_id].unread = (AppState.chats[chat_id].unread || 0) + 1;
+                // Check if message already exists
+                if (!AppState.messages[chat_id].find(m => m.id === message.id)) {
+                    AppState.messages[chat_id].push(message);
+                    if (AppState.chats[chat_id]) {
+                        AppState.chats[chat_id].lastMessage = message;
+                        if (chat_id !== AppState.activeChat) AppState.chats[chat_id].unread = (AppState.chats[chat_id].unread || 0) + 1;
+                    }
+                    Actions.showMain();
+                    if (AppState.activeChat === chat_id) setTimeout(() => { const c = document.getElementById('messagesContainer'); if (c) c.scrollTop = c.scrollHeight; }, 100);
                 }
-                Actions.showMain();
-                if (AppState.activeChat === chat_id) setTimeout(() => { const c = document.getElementById('messagesContainer'); if (c) c.scrollTop = c.scrollHeight; }, 100);
             });
             AppState.socket.on('message_edited', (data) => {
                 const msgs = AppState.messages[data.chat_id] || [];
@@ -306,7 +417,7 @@
             },
             renderMain() {
                 const user = AppState.users[AppState.currentUser];
-                const requestCount = AppState.requests.received.filter(r => r.status === 'pending').length;
+                const requestCount = AppState.requests.received ? AppState.requests.received.filter(r => r.status === 'pending').length : 0;
                 return `<div class="app-container">${Components.renderSidebar(user, requestCount)}${Components.renderChatArea()}</div><div id="modalContainer"></div><div id="mediaViewer"></div><div id="toastContainer"></div>`;
             },
             renderSidebar(user, requestCount) {
