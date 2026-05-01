@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>IDChat</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <div class="app">
+
+        <div class="sidebar">
+            <div class="profile-mini">
+                <img id="myDp" src="https://via.placeholder.com/45">
+                <div>
+                    <h3 id="myName">Loading...</h3>
+                    <small>ID: <span id="myId"></span></small>
+                </div>
+            </div>
+
+            <div class="nav">
+                <a href="profile.html">Profile</a>
+                <a href="settings.html">Settings</a>
+                <button onclick="logout()">Logout</button>
+            </div>
+
+            <div class="add-contact">
+                <input id="contactIdInput" type="text" placeholder="Enter user ID">
+                <button onclick="addContact()">Add Contact</button>
+            </div>
+
+            <h3>Contacts</h3>
+            <div id="contacts"></div>
+        </div>
+
+        <div class="chat-area">
+            <div class="chat-header">
+                <h3 id="chatTitle">Select a contact</h3>
+                <small id="chatSubTitle"></small>
+            </div>
+
+            <div id="messages" class="messages"></div>
+
+            <div id="replyBox" class="reply-box">
+                <span id="replyText"></span>
+                <button onclick="cancelReply()">x</button>
+            </div>
+
+            <div class="chat-input">
+                <input id="mediaInput" type="file" accept="image/*,video/*">
+                <button onclick="sendMedia()">Send File</button>
+
+                <button id="voiceBtn" onclick="toggleRecording()">Mic</button>
+
+                <input id="messageInput" type="text" placeholder="Type message">
+                <button onclick="sendTextMessage()">Send</button>
+            </div>
+        </div>
+
+    </div>
+
+    <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/recorder.js"></script>
+    <script src="js/chat.js"></script>
+</body>
+</html>

@@ -1,0 +1,315 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.theme-light {
+    --bg: #e5ddd5;
+    --sidebar: #075e54;
+    --header: #128c7e;
+    --text: #111;
+    --box: #ffffff;
+    --mine: #dcf8c6;
+    --theirs: #ffffff;
+    --button: #25d366;
+}
+
+.theme-dark {
+    --bg: #111b21;
+    --sidebar: #202c33;
+    --header: #202c33;
+    --text: #ffffff;
+    --box: #2a3942;
+    --mine: #005c4b;
+    --theirs: #202c33;
+    --button: #00a884;
+}
+
+.theme-green {
+    --bg: #d8f3dc;
+    --sidebar: #2d6a4f;
+    --header: #40916c;
+    --text: #111;
+    --box: #ffffff;
+    --mine: #b7e4c7;
+    --theirs: #ffffff;
+    --button: #52b788;
+}
+
+.theme-blue {
+    --bg: #dbeafe;
+    --sidebar: #1d4ed8;
+    --header: #2563eb;
+    --text: #111;
+    --box: #ffffff;
+    --mine: #bfdbfe;
+    --theirs: #ffffff;
+    --button: #3b82f6;
+}
+
+body {
+    background: var(--bg);
+    color: var(--text);
+}
+
+.auth-page {
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.auth-box {
+    background: var(--box);
+    width: 330px;
+    padding: 25px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.auth-box input,
+.page-box input,
+.page-box textarea,
+.page-box select {
+    width: 100%;
+    padding: 12px;
+    margin: 8px 0;
+}
+
+button {
+    padding: 10px 14px;
+    border: none;
+    background: var(--button);
+    color: white;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+button:hover {
+    opacity: 0.9;
+}
+
+.app {
+    height: 100vh;
+    display: flex;
+}
+
+.sidebar {
+    width: 320px;
+    background: var(--sidebar);
+    color: white;
+    padding: 15px;
+    overflow-y: auto;
+}
+
+.profile-mini {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.profile-mini img {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+}
+
+.nav {
+    margin: 15px 0;
+    display: flex;
+    gap: 5px;
+    flex-wrap: wrap;
+}
+
+.nav a {
+    color: white;
+    background: rgba(255,255,255,0.15);
+    padding: 8px;
+    border-radius: 5px;
+    text-decoration: none;
+}
+
+.add-contact input {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.add-contact button {
+    width: 100%;
+}
+
+.contact {
+    display: flex;
+    gap: 10px;
+    background: rgba(255,255,255,0.15);
+    padding: 10px;
+    margin: 8px 0;
+    cursor: pointer;
+    border-radius: 8px;
+}
+
+.contact img {
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+}
+
+.contact small {
+    display: block;
+    opacity: 0.8;
+}
+
+.chat-area {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.chat-header {
+    background: var(--header);
+    color: white;
+    padding: 15px;
+}
+
+.chat-header h3 {
+    margin: 0;
+}
+
+.messages {
+    flex: 1;
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.message {
+    max-width: 65%;
+    padding: 10px;
+    margin: 8px 0;
+    border-radius: 8px;
+    color: var(--text);
+}
+
+.mine {
+    background: var(--mine);
+    margin-left: auto;
+}
+
+.theirs {
+    background: var(--theirs);
+    margin-right: auto;
+}
+
+.message small {
+    display: block;
+    margin-top: 5px;
+    font-size: 11px;
+    opacity: 0.7;
+}
+
+.chat-media {
+    max-width: 260px;
+    max-height: 260px;
+    border-radius: 8px;
+    display: block;
+}
+
+.msg-actions {
+    margin-top: 5px;
+}
+
+.msg-actions button {
+    font-size: 11px;
+    padding: 4px 6px;
+    margin-right: 3px;
+}
+
+.reply-preview,
+.reply-box {
+    background: rgba(0,0,0,0.08);
+    padding: 6px;
+    border-left: 3px solid var(--button);
+    margin-bottom: 5px;
+}
+
+.reply-box {
+    display: none;
+}
+
+.chat-input {
+    display: flex;
+    gap: 5px;
+    padding: 10px;
+    background: var(--box);
+}
+
+.chat-input input[type="text"] {
+    flex: 1;
+    padding: 10px;
+}
+
+.chat-input input[type="file"] {
+    width: 160px;
+}
+
+.page-box {
+    width: 400px;
+    margin: 40px auto;
+    padding: 25px;
+    background: var(--box);
+    border-radius: 10px;
+}
+
+.profile-preview {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    object-fit: cover;
+}
+
+.profile-buttons {
+    display: flex;
+    gap: 8px;
+    margin: 10px 0;
+}
+
+.profile-buttons button {
+    flex: 1;
+}
+
+.profile-mini img,
+.contact img {
+    object-fit: cover;
+}
+
+.danger {
+    background: #dc2626;
+}
+
+.password-box {
+    position: relative;
+    width: 100%;
+    margin: 8px 0;
+}
+
+.password-box input {
+    width: 100%;
+    padding-right: 70px;
+    margin: 0;
+}
+
+.toggle-password {
+    position: absolute;
+    right: 6px;
+    top: 50%;
+    transform: translateY(-50%);
+    padding: 6px 10px;
+    font-size: 12px;
+    background: #555;
+    color: white;
+    border-radius: 4px;
+}

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Profile - IDChat</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body>
+
+    <div class="page-box">
+        <h2>Edit Profile</h2>
+
+        <img id="profilePreview" class="profile-preview" src="https://via.placeholder.com/100">
+
+        <input id="profileImage" type="file" accept="image/*">
+
+        <div class="profile-buttons">
+            <button onclick="uploadProfileImage()">Upload DP</button>
+            <button class="danger" onclick="removeProfileImage()">Remove DP</button>
+        </div>
+
+        <form id="profileForm">
+            <label>Your ID Cannot Be Changed</label>
+            <input id="chatId" type="text" disabled>
+
+            <input id="name" type="text" placeholder="Name" required>
+            <input id="username" type="text" placeholder="Username" required>
+            <textarea id="about" placeholder="About"></textarea>
+
+            <button type="submit">Save Profile</button>
+        </form>
+
+        <a href="chat.html">Back to Chat</a>
+    </div>
+
+    <script src="js/api.js"></script>
+    <script src="js/profile.js"></script>
+</body>
+
+</html>
