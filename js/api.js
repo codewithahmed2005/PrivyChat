@@ -1,4 +1,4 @@
-const API_URL = "http://127.0.0.1:5000";
+const API_URL = "https://chat-app-hb6j.onrender.com";
 
 function getToken() {
     return localStorage.getItem("token");
